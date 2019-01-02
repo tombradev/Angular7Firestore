@@ -47,7 +47,7 @@ export class EmployeeComponent implements OnInit {
     if (form.value.id == null) { // this how it implements update on the same submit button
       this.firestore.collection('employees').add(data);
     } else {
-      this.firestore.doc('employee/' + form.value.id).update(data); // however if we not delete the ID, the data.id will be submitted twice
+      this.firestore.doc('employees/' + form.value.id).update(data); // however if we not delete the ID, the data.id will be submitted twice
     }
     this.resetForm(form); // Resetting forms into original state, and ready to input next batch
     this.toastr.success('Submitted successfully', 'EMP. Register');
