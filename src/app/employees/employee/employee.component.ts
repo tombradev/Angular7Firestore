@@ -42,8 +42,13 @@ export class EmployeeComponent implements OnInit {
   onSubmit(form: NgForm) {
     // this is where the plugins is used, after imported above
     // tslint:disable-next-line:prefer-const
-    let data = form.value;
-    this.firestore.collection('employees').add(data);
+    let data = Object.assign({}, form.value); // copy of the data from the froms object into a new copy called data var
+    delete data.id; // deleteting id inorder not to submit twice, however the copy of the data that is deleted
+    if (form.value.id == null) { // this how it implements update on the same submit button
+      this.firestore.collection('employees').add(data);
+    } else {
+      this.firestore.doc('employee/' + form.value.id).update(data); // however if we not delete the ID, the data.id will be submitted twice
+    }
     this.resetForm(form); // Resetting forms into original state, and ready to input next batch
     this.toastr.success('Submitted successfully', 'EMP. Register');
   }
