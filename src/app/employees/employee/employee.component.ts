@@ -39,18 +39,19 @@ export class EmployeeComponent implements OnInit {
     };
   }
 
-  onSubmit(form: NgForm) {
-    // this is where the plugins is used, after imported above
-    // tslint:disable-next-line:prefer-const
-    let data = Object.assign({}, form.value); // copy of the data from the froms object into a new copy called data var
-    delete data.id; // deleteting id inorder not to submit twice, however the copy of the data that is deleted
-    if (form.value.id == null) { // this how it implements update on the same submit button
-      this.firestore.collection('employees').add(data);
-    } else {
-      this.firestore.doc('employees/' + form.value.id).update(data); // however if we not delete the ID, the data.id will be submitted twice
-    }
-    this.resetForm(form); // Resetting forms into original state, and ready to input next batch
-    this.toastr.success('Submitted successfully', 'EMP. Register');
-  }
+   onSubmit(form: NgForm) {
+     // this is where the plugins is used, after imported above
+     // tslint:disable-next-line:prefer-const
+     let data = Object.assign({}, form.value); // copy of the data from the froms object into a new copy called data var
+     delete data.Id; // deleteting id inorder not to submit twice, however the copy of the data that is deleted
+     if (form.value.Id == null) { // this how it implements update on the same submit button
+       this.firestore.collection('employees').add(data);
+     } else {
+       // tslint:disable-next-line:max-line-length
+       this.firestore.doc('employees/' + form.value.Id).update(data); // however if we not delete the ID, the data.id will be submitted twice
+     }
+     this.resetForm(form); // Resetting forms into original state, and ready to input next batch
+     this.toastr.success('Submitted successfully', 'EMP. Register');
+   }
 
 }
