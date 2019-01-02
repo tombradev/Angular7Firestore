@@ -1,0 +1,20 @@
+● src
++---● app
+|   +--● employees (ng g c employee)
+|   |  |--employees.component.ts|.html|.css
+|   |  +--● employee (ng g c employees/employee --spec=false)
+|   |  |  |--employee.component.ts|.html|.css
+|   |  |
+|   |  +--● employee-list (ng g c employees/employee-list --spec=false)
+|   |  |  |--employee-list.component.ts|.html|.css
+|   |  |
+|   |  +--● shared 
+|   |     |--employee.service.ts (ng g s shared/employee --spec=false)
+|   |     |--employee.model.ts (ng g cl shared/employee --type=model)
+|   |
+|   |--app.module.ts (configured firebase connection)
+|
++---● environments  
+|   |--environment.ts (saved firebase connection details)
+|
+|--index.html (cdn path for bootstrap and font awesome icon)

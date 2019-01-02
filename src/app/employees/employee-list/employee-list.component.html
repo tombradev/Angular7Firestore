@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Mobile</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of list"> <!-- emp is the object that is passed, the object is case sensitive!! -->
+      <td (click)="onEdit(emp)">{{emp.EmpCode}} - {{emp.FullName}}</td>
+      <td (click)="onEdit(emp)">{{emp.Position}}</td>
+      <td (click)="onEdit(emp)">{{emp.Mobile}}</td>
+      <td><a class="btn text-danger"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>
